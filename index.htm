@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>advertisement</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #banner {
+			position: relative;
+			width: 300px;
+			height: 250px;
+			background: #fff;
+			border: 2px solid #666;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        #banner > * { position: absolute; }
+        #field {
+            width: 100%;
+            height: 100px;
+            background: url('field.png');
+            bottom: -50%;
+            animation: field 2s forwards;
+        }
+        #seats {
+            width: 100%;
+            height: 70px;
+            background: url('seats.png');
+            bottom: -250%;
+            animation: seats 3s forwards;
+        }
+        #sky {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(#0081e3, #fff);
+            top: 0;
+            animation: sky 6s forwards;
+        }
+        #ball {
+            width: 40px;
+            height: 40px;
+            left: -50px;
+            animation: ball 7s forwards;
+        }
+        h1 {
+            color: #fff;
+            animation: h1 8s forwards;
+            opacity: 0;
+            font-size: 2em;
+        }
+
+
+
+        @keyframes field {
+            from {bottom: -50%;}
+            to {bottom: 0;}
+        }
+        @keyframes seats {
+            from {bottom: -250%;}
+            to {bottom: 100px;}
+        }
+        @keyframes sky {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @keyframes ball {
+            from {left: -1050px; transform: rotate(0deg)}
+            to {left: 260px; transform: rotate(1080deg)}
+        }
+        @keyframes h1 {
+            from {opacity: 0; font-size: 2em;}
+            to {opacity: 1; font-size: 3.3em;}
+        }
+
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div id="field"></div>
+        <div id="seats"></div>
+        <div id="sky"></div>
+        <img id="ball" src="ball.png" alt="">
+        <h1>BET BET</h1>
+    </div>
+
+    <script>
+        function colors() {
+            let colArr = ["red", "orange", "yellow", "green", "lightblue", "blue", "violet", "lime"];
+            let rand = Math.floor(Math.random() * colArr.length);
+            $("#banner").css({borderColor: colArr[rand]});
+            $("h1").css({color: colArr[rand]});
+        }
+        let colChange = setInterval(colors, 100);
+    </script>
+</body>
+</html>
